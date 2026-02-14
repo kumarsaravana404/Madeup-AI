@@ -2,12 +2,20 @@ const aiService = require('../services/ai.service');
 const ragService = require('../services/rag.service');
 const logger = require('../utils/logger');
 
-exports.handleChat = async (req, res) => {
-  const { message } = req.body;
+const { z } = require('zod');
 
-  if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
+const chatSchema = z.object({
+  message: z.string().min(1, "Message is required").max(2000, "Message too long")
+});
+
+exports.handleChat = async (req, res) => {
+  const result = chatSchema.safeParse(req.body);
+
+  if (!result.success) {
+      return res.status(400).json({ error: result.error.errors[0].message });
   }
+
+  const { message } = result.data;
 
   try {
     // 1. Retrieve Knowledge
