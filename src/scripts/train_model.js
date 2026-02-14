@@ -86,6 +86,7 @@ INSTRUCTIONS:
 - Risk level must be:
   Low | Medium | High | Critical
 
+- If the input is a conceptual question (e.g. "What is DID?"), provide the detailed answer in the "reasoning" field.
 - Always include blockchain audit structure.
 - If no anomaly, still return full structure with appropriate reasoning.
 - Never return plain text.
