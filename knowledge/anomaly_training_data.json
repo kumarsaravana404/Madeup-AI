@@ -1,0 +1,17 @@
+[
+  {
+    "instruction": "Analyze a login anomaly with score 0.85 (High Risk).",
+    "context": "Login attempt from IP 192.168.1.5, location: Russia, time: 03:00 AM, failed_attempts: 15, user_agent: Python-urllib/3.8",
+    "response": "{\n  \"attack_type\": \"Credential Stuffing / Brute Force\",\n  \"risk_level\": \"Critical\",\n  \"confidence_score\": \"0.92\",\n  \"reasoning\": \"High volume of failed attempts (15) from a high-risk geolocation (Russia) at an unusual time (03:00 AM) using a non-standard User-Agent (Python script).\",\n  \"feature_analysis\": {\n    \"suspicious_features\": [\"failed_attempts\", \"geolocation\", \"time_of_day\", \"user_agent\"],\n    \"normal_features\": []\n  },\n  \"mitigation_steps\": [\"Block IP 192.168.1.5 immediately\", \"Enable CAPTCHA for this user account\", \"Reset user password\"],\n  \"long_term_recommendations\": [\"Implement Geo-blocking\", \"Behavioral Biometrics\", \"Rate Limiting on Login Endpoint\"]\n}"
+  },
+  {
+    "instruction": "Analyze a login attempt with score 0.12 (Low Risk).",
+    "context": "Login attempt from IP 10.0.0.1, location: USA, time: 09:15 AM, failed_attempts: 0, user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "response": "{\n  \"attack_type\": \"Normal Behavior\",\n  \"risk_level\": \"Low\",\n  \"confidence_score\": \"0.98\",\n  \"reasoning\": \"Standard login from a known location during business hours with a valid browser User-Agent and zero failed attempts.\",\n  \"feature_analysis\": {\n    \"suspicious_features\": [],\n    \"normal_features\": [\"geolocation\", \"time_of_day\", \"failed_attempts\", \"user_agent\"]\n  },\n  \"mitigation_steps\": [],\n  \"long_term_recommendations\": [\"Regular security audits\", \"MFA Enforcement\"]\n}"
+  },
+  {
+    "instruction": "Analyze a login attempt with score 0.65 (Medium Risk).",
+    "context": "Login attempt from IP 45.33.22.11, location: China, time: 02:00 PM, failed_attempts: 2, user_agent: Mozilla/5.0 (Linux; Android 10)",
+    "response": "{\n  \"attack_type\": \"Suspicious Geolocation / Potential Bot\",\n  \"risk_level\": \"Medium\",\n  \"confidence_score\": \"0.75\",\n  \"reasoning\": \"Login from a high-risk location (China) which deviates from user's typical pattern (USA). Failed attempts are low but presence of Android user agent on a potentially server-hosted IP warrants caution.\",\n  \"feature_analysis\": {\n    \"suspicious_features\": [\"geolocation\"],\n    \"normal_features\": [\"user_agent\", \"time_of_day\", \"failed_attempts\"]\n  },\n  \"mitigation_steps\": [\"Trigger MFA challenge\", \"Notify user of new device login\"],\n  \"long_term_recommendations\": [\"Adaptive Authentication Policy\", \"Impossible Travel Detection\"]\n}"
+  }
+]
