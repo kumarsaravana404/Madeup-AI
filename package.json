@@ -4,6 +4,7 @@
   "description": "Enterprise AI Assistant with RAG and Ollama",
   "main": "server.js",
   "scripts": {
+    "prestart": "node src/scripts/check-ollama.js",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "lint": "eslint ."
